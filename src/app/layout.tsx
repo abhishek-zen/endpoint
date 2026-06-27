@@ -27,7 +27,21 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* Bodhini tour guide SDK */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.bodhiniConfig = { userId: "${process.env.NEXT_PUBLIC_BODHINI_USER_ID ?? ''}", email: "${process.env.NEXT_PUBLIC_BODHINI_EMAIL ?? ''}", plan: "${process.env.NEXT_PUBLIC_BODHINI_PLAN ?? ''}" };`,
+          }}
+        />
+        <script
+          id="bodhiniScript"
+          src={process.env.NEXT_PUBLIC_BODHINI_URL}
+          data-token={process.env.NEXT_PUBLIC_BODHINI_TOKEN}
+          async
+        />
+      </body>
     </html>
   );
 }
