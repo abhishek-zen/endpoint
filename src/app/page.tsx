@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { bodhiniStartGuide } from '@/lib/bodhini'
+import { bodhiniStartGuide, bodhiniOnEvent } from '@/lib/bodhini'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -293,6 +293,11 @@ export default function Home() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  // Bodhini guide event listener
+  useEffect(() => bodhiniOnEvent(({ event_type, guide_id, step_id }) => {
+    console.log('[Bodhini]', event_type, guide_id, step_id ?? '')
+  }), [])
 
   // Fetch models & agents
   useEffect(() => {

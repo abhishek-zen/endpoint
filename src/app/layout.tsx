@@ -32,7 +32,7 @@ export default function RootLayout({
         {/* Bodhini tour guide SDK */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.bodhiniConfig = { userId: "${process.env.NEXT_PUBLIC_BODHINI_USER_ID ?? ''}", email: "${process.env.NEXT_PUBLIC_BODHINI_EMAIL ?? ''}", plan: "${process.env.NEXT_PUBLIC_BODHINI_PLAN ?? ''}" };`,
+            __html: `window.bodhiniConfig = { userId: "${process.env.NEXT_PUBLIC_BODHINI_USER_ID ?? ''}", email: "${process.env.NEXT_PUBLIC_BODHINI_EMAIL ?? ''}", firstName: "${process.env.NEXT_PUBLIC_BODHINI_FIRST_NAME ?? ''}", lastName: "${process.env.NEXT_PUBLIC_BODHINI_LAST_NAME ?? ''}", plan: "${process.env.NEXT_PUBLIC_BODHINI_PLAN ?? ''}" };`,
           }}
         />
         <script
